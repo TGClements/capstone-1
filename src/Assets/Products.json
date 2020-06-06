@@ -1,0 +1,20 @@
+{
+  "products": [
+    {
+      "sku": 1,
+      "name": "Jalapeno Lime Salt",
+      "price": 7,
+      "image": "../Assets/1 - webimg-watermark.png",
+      "tag": ["Jalapeno"],
+      "inStock": 10
+    },
+    {
+      "sku": 2,
+      "name": "Cayenne Salt",
+      "price": 7,
+      "image": "../Assets/2 - webimg-watermark.png",
+      "tag": ["Cayenne"],
+      "inStock": 10
+    }
+  ]
+}

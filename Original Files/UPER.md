@@ -30,9 +30,9 @@
 <h2>
     3. Executing the Plan
 </h2>
-*
-*
-*
+* Added pages for home, cart, and page not found.
+* Created products.json to house the products and their properties.
+* Added custom fonts to mimic the site built on wordpress.
 *
 *
 *
