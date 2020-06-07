@@ -3,17 +3,101 @@
     {
       "sku": 1,
       "name": "Jalapeno Lime Salt",
+      "description": "Made with organic and non-GMO Jalapeno Peppers.<br/>Median Heat of Pepper: 5,250 Scoville.<br/>Flavor of Pepper: Bright, Grassy, Bitter",
+      "ingredients": "<ul>Ingredients: <li>Sea Salt</li><li>Jalapeno Peppers</li><li>True Lime®</li></ul>",
       "price": 7,
-      "image": "../Assets/1 - webimg-watermark.png",
+      "image": "/images/1-webimg-watermark.png",
       "tag": ["Jalapeno"],
       "inStock": 10
     },
     {
       "sku": 2,
       "name": "Cayenne Salt",
+      "description": "Made with organic and non-GMO Cayenne Peppers.<br/>Median Heat of Pepper: 40,000 Scoville.<br/>Flavor of Pepper: Neutral (general red pepper flavor)",
+      "ingredients": "<ul>Ingredients: <li>Sea Salt</li><li>Cayenne Peppers</li></ul>",
       "price": 7,
-      "image": "../Assets/2 - webimg-watermark.png",
+      "image": "./images/2-webimg-watermark.png",
       "tag": ["Cayenne"],
+      "inStock": 10
+    },
+    {
+      "sku": 3,
+      "name": "Habanero Salt",
+      "description": "Made with organic and non-GMO Habanero Peppers.<br/>Median Heat of Pepper: 225,000 Scoville.<br/>Flavor of Pepper: Sweet, Fruity, Tropical",
+      "ingredients": "<ul>Ingredients: <li>Sea Salt</li><li>Habanero Peppers</li><li>Raspberries</li></ul>",
+      "price": 7,
+      "image": "./images/3-webimg-watermark.png",
+      "tag": ["Habanero"],
+      "inStock": 10
+    },
+    {
+      "sku": 4,
+      "name": "Ghost Salt",
+      "description": "Made with organic and non-GMO Ghost Peppers.<br/>Median Heat of Pepper: ~948,000 Scoville.<br/>Flavor of Pepper: Sweet, Fruity, Earthy",
+      "ingredients": "<ul>Ingredients: <li>Sea Salt</li><li>Ghost Peppers</li></ul>",
+      "price": 8,
+      "image": "./images/4-webimg-watermark.png",
+      "tag": ["Ghost"],
+      "inStock": 10
+    },
+    {
+      "sku": 5,
+      "name": "Scorpion Salt",
+      "description": "Made with organic and non-GMO Moruga Scorpion Peppers.<br/>Median Heat of Pepper: ~1,600,000 Scoville.<br/>Flavor of Pepper: Sweet, Fruity",
+      "ingredients": "<ul>Ingredients: <li>Sea Salt</li><li>Moruga Scorpion Peppers</li></ul>",
+      "price": 9,
+      "image": "./images/5-webimg-watermark.png",
+      "tag": ["Scorpion"],
+      "inStock": 10
+    },
+    {
+      "sku": 6,
+      "name": "Reaper Salt",
+      "description": "Made with organic and non-GMO Carolina Reaper Peppers.<br/>Median Heat of Pepper: ~1,800,000 Scoville.<br/>Flavor of Pepper: Sweet, Fruity",
+      "ingredients": "<ul>Ingredients: <li>Sea Salt</li><li>Carolina Reaper Peppers</li></ul>",
+      "price": 10,
+      "image": "./images/6-webimg-watermark.png",
+      "tag": ["Reaper"],
+      "inStock": 10
+    },
+    {
+      "sku": 7,
+      "name": "Dragon's Breath Salt",
+      "description": "Made with organic and non-GMO Dragon's Breath Peppers.<br/>Median Heat of Pepper: ~2,480,000 Scoville.<br/>Flavor of Pepper: Sweet, Fruity",
+      "ingredients": "<ul>Ingredients: <li>Sea Salt</li><li>Dragon's Breath Peppers</li></ul>",
+      "price": 11,
+      "image": "./images/7-webimg-watermark.png",
+      "tag": ["Dragon's Breath"],
+      "inStock": 10
+    },
+    {
+      "sku": 8,
+      "name": "7 Pot Brain Strain Salt",
+      "description": "Made with organic and non-GMO 7 Pot Brain Strain Peppers.<br/>Median Heat of Pepper: ~1,175,000 Scoville.<br/>Flavor of Pepper: Sweet, Fruity",
+      "ingredients": "<ul>Ingredients: <li>Sea Salt</li><li>7 Pot Brain Strain Peppers</li></ul>",
+      "price": 12,
+      "image": "./images/LT-8-webimg-watermark.png",
+      "tag": ["7 Pot Brain Strain", "Limited Flavor"],
+      "inStock": 10
+    },
+    {
+      "sku": 9,
+      "name": "7 Pot Douglah Salt",
+      "description": "Made with organic and non-GMO 7 Pot Douglah Peppers.<br/>Median Heat of Pepper: ~1,380,000 Scoville.<br/>Flavor of Pepper: Sweet, Fruity, Earthy, Nutty",
+      "ingredients": "<ul>Ingredients: <li>Sea Salt</li><li>7 Pot Douglah Peppers</li></ul>",
+      "price": 12,
+      "image": "./images/LT-9-webimg-watermark.png",
+      "tag": ["7 Pot Douglah", "Limited Flavor"],
+      "inStock": 10
+    },
+    {
+      "sku": 10,
+      "name": "Chocolate Bhutlah Salt",
+      "description": "Made with organic and non-GMO Chocolate Bhutlah Peppers.<br/>Median Heat of Pepper: ~1,750,000 Scoville.<br/>Flavor of Pepper: Sweet, Earthy",
+      "ingredients": "<ul>Ingredients: <li>Sea Salt</li><li>Chocolate Bhutlah Peppers</li></ul>",
+      "price": 12,
+      "image": "./images/LT-10-webimg-watermark.png",
+      "tag": ["Chocolate Bhutlah", "Limited Flavor"],
       "inStock": 10
     }
   ]
