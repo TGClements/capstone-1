@@ -4,7 +4,11 @@ function Home() {
   return (
     <div className='productContainer'>
       <div className='card'>
-        <img src='1-webimg-watermark.png' className='card-img-top' alt='...' />
+        <img
+          src='/images/1-webimg-watermark.png'
+          className='card-img-top'
+          alt='...'
+        />
         <div className='card-body'>
           <h5 className='card-title'>Card Title</h5>
           <p className='card-text'>This is some placeholder.</p>
