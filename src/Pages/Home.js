@@ -1,50 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-function Home() {
+function Home({
+  products,
+  cartItems,
+  setCartItems,
+  cartTotal,
+  setCartTotal,
+  show,
+  setShow,
+  toastBody,
+  setToastBody,
+}) {
+  const [stock, setStock] = useState([10, 10, 10, 10, 10, 10, 10, 10, 10, 10]);
+
   return (
     <div className='productContainer'>
-      <div className='card'>
-        <h5 className='card-header'>Jalapeno Lime Salt</h5>
-        <img
-          src='/images/1-webimg-watermark.png'
-          className='card-img-top'
-          alt='...'
-          style={{ maxWidth: '200px', margin: 'auto' }}
-        />
-        <div className='card-body'>
-          <h5 className='card-title'>$7</h5>
-          <p className='card-text'>
-            Made with organic and non-GMO Jalapeno Peppers. <br /> Median Heat
-            of Pepper: 5,250 Scoville.
-            <br />
-            Flavor of Pepper: Bright, Grassy, Bitter
-          </p>
-          <p className='card-text'>Stock: 10</p>
-          <button className='btn btn-primary'>Add to Cart</button>
-        </div>
-      </div>
-
-      <div className='card'>
-        <h5 className='card-header'>Cayenne Salt</h5>
-        <img
-          src='/images/2-webimg-watermark.png'
-          className='card-img-top'
-          alt='...'
-          style={{ maxWidth: '200px', margin: 'auto' }}
-        />
-        <div className='card-body'>
-          <h5 className='card-title'>$7</h5>
-          <p className='card-text'>
-            Made with organic and non-GMO Cayenne Peppers.
-            <br />
-            Median Heat of Pepper: 40,000 Scoville.
-            <br />
-            Flavor of Pepper: Neutral (general red pepper flavor)
-          </p>
-          <p className='card-text'>Stock: 10</p>
-          <button className='btn btn-primary'>Add to Cart</button>
-        </div>
-      </div>
+      {products.map((product, i) => {
+        // Map thru all the products and create a card for each of them
+        return (
+          <div className='card' key={products[i].sku} id={products[i].sku}>
+            <h5 className='card-header'>{products[i].name}</h5>
+            <img
+              src={products[i].image}
+              className='card-img-top'
+              alt={products[i].name}
+              style={{ maxWidth: '200px', margin: 'auto' }}
+            />
+            <div className='card-body'>
+              <h5 className='card-title'>${products[i].price}</h5>
+              <p className='card-text'>
+                {products[i].description}
+                <br />
+                {products[i].heat}
+                <br />
+                {products[i].flavor}
+              </p>
+              <p className='card-text'>Stock: {stock[i]}</p>
+              <button
+                className='btn btn-primary'
+                onClick={() => {
+                  setCartItems(cartItems.concat(products[i]));
+                  setCartTotal(cartTotal + products[i].price);
+                  setStock(stock[i] - 1);
+                  setToastBody(products[i].name);
+                  setShow(true);
+                }}
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }

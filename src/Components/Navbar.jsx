@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function Navbar() {
+function Navbar({ cartItems }) {
   const [text, setText] = useState('');
 
   const onSubmit = (e) => {
@@ -20,7 +20,10 @@ function Navbar() {
 
   return (
     <Fragment>
-      <nav className='navbar navbar-dark bg-dark'>
+      <nav
+        className='navbar fixed-top navbar-dark bg-dark'
+        style={{ zIndex: 1 }}
+      >
         <span className='navbar-brand mb-0 h1' id='navHeader'>
           <Link to='/' id='homeLink'>
             Badger's Pepper Products
@@ -43,7 +46,8 @@ function Navbar() {
         </form>
         <Link to='/cart' id='cartLink'>
           <button className='btn btn-outline-info my-2 my-sm-0'>
-            Shopping Cart
+            Shopping Cart{' '}
+            <span className='badge badge-dark'>({cartItems.length})</span>
           </button>
         </Link>
       </nav>
