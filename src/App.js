@@ -6,21 +6,29 @@ import Footer from './Components/Footer';
 import Home from './Pages/Home';
 import Cart from './Pages/Cart';
 import NotFound from './Pages/NotFound';
+import ThankYou from './Pages/ThankYou';
 import Products from './Assets/Products.json';
 import { Toast } from 'react-bootstrap';
 
 function App() {
-  const products = Products.products;
+  const [products, setProducts] = useState(Products.products);
 
   const [cartItems, setCartItems] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
   const [show, setShow] = useState(false);
   const [toastBody, setToastBody] = useState('something');
+  const [stock, setStock] = useState([10, 10, 10, 10, 10, 10, 10, 10, 10, 10]);
+  const [showSearch, setShowSearch] = useState(true);
 
   return (
     <Router>
       <div className='App'>
-        <Navbar cartItems={cartItems} />
+        <Navbar
+          cartItems={cartItems}
+          products={products}
+          setProducts={setProducts}
+          showSearch={showSearch}
+        />
         <Toast
           style={{
             position: 'fixed',
@@ -58,6 +66,9 @@ function App() {
                   setShow={setShow}
                   toastBody={toastBody}
                   setToastBody={setToastBody}
+                  stock={stock}
+                  setStock={setStock}
+                  setShowSearch={setShowSearch}
                 />
               )}
             />
@@ -71,9 +82,14 @@ function App() {
                   setCartItems={setCartItems}
                   cartTotal={cartTotal}
                   setCartTotal={setCartTotal}
+                  stock={stock}
+                  setStock={setStock}
+                  setShowSearch={setShowSearch}
+                  stripeToken='pk_test_l9KprKRIzCQio6b6bjTjHiFR00wLCYUJLU'
                 />
               )}
             />
+            <Route exact path='/thanks' component={ThankYou} />
             <Route component={NotFound} />
           </Switch>
         </div>

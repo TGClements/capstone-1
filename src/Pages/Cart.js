@@ -1,15 +1,59 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-function Cart({ products, cartItems, setCartItems, cartTotal, setCartTotal }) {
+function Cart({
+  products,
+  cartItems,
+  setCartItems,
+  cartTotal,
+  setCartTotal,
+  stock,
+  setStock,
+  setShowSearch,
+  stripeToken,
+}) {
+  // Stripe
+  const [stripe, setStripe] = useState(null);
+  useEffect(() => {
+    if (window.Stripe) {
+      setStripe(window.Stripe(stripeToken));
+    }
+  }, [stripeToken]);
+  function checkout() {
+    stripe.redirectToCheckout({
+      mode: 'payment',
+      lineItems: cartItems.map((item, i) => ({
+        price: item.stripePrice,
+        quantity: item.quantity,
+      })),
+      successUrl: 'http://localhost:3000/thanks',
+      cancelUrl: 'http://localhost:3000/',
+    });
+  }
+  // Stripe
+
   function deleteItem(i) {
+    // Splice out the item from the cart array
     let newCart = [...cartItems];
     newCart.splice(i, 1);
     setCartItems(newCart);
   }
 
   function clearCart() {
+    // Since this is not actually updating a db anywhere, this has to be thought of as a 'single-session' ecommerce site, instead of 'multi-session'
+    // Therefore we are just setting back the stock to the original numbers
+    setStock([10, 10, 10, 10, 10, 10, 10, 10, 10, 10]);
     setCartItems([]);
   }
+
+  function updateStock(i) {
+    // Take in the stock array, then add 1 to the stock for whichever item was removed from the cart
+    const updatedStock = [...stock];
+    updatedStock[i] = updatedStock[i] + 1;
+    console.log(updatedStock);
+    setStock(updatedStock);
+  }
+
+  setShowSearch(false);
 
   console.log(cartItems.length);
   if (cartItems.length === 0) {
@@ -39,14 +83,15 @@ function Cart({ products, cartItems, setCartItems, cartTotal, setCartTotal }) {
               return (
                 <li className='list-group-item' key={i}>
                   <p>{cartItems[i].name}</p>
-                  <p>{cartItems[i].flavor}</p>
-                  <p>${cartItems[i].price}</p>
+                  <p>Quantity: {cartItems[i].quantity}</p>
+                  <p>${cartItems[i].price} (each)</p>
                   <button
                     className='btn btn-link'
                     id='deleteItem'
                     onClick={() => {
                       deleteItem(i);
                       setCartTotal(cartTotal - cartItems[i].price);
+                      updateStock(cartItems[i].sku);
                     }}
                   >
                     <svg
@@ -87,7 +132,14 @@ function Cart({ products, cartItems, setCartItems, cartTotal, setCartTotal }) {
               >
                 Clear Cart
               </button>
-              <button className='btn btn-success'>Checkout</button>
+              <button
+                className='btn btn-success'
+                onClick={() => {
+                  checkout();
+                }}
+              >
+                Checkout
+              </button>
             </div>
           </ul>
         </div>

@@ -1,27 +1,20 @@
 import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Search from './Search';
 
-function Navbar({ cartItems }) {
-  const [text, setText] = useState('');
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-
-    if (text === '') {
-      // If nothing is entered, display the alert for 3 seconds
-    } else {
-      // Otherwise add item
-      setText('');
-      document.getElementById('inputField').focus();
-    }
-  };
-
-  const onChange = (e) => setText(e.target.value);
+function Navbar({ cartItems, products, setProducts, showSearch }) {
+  function getTotalCartItems() {
+    let counter = 0;
+    cartItems.forEach((item, n) => {
+      counter += item.quantity;
+    });
+    return counter;
+  }
 
   return (
     <Fragment>
       <nav
-        className='navbar fixed-top navbar-dark bg-dark'
+        className='navbar navbar-expand-lg fixed-top navbar-dark bg-dark'
         style={{ zIndex: 1 }}
       >
         <span className='navbar-brand mb-0 h1' id='navHeader'>
@@ -29,27 +22,31 @@ function Navbar({ cartItems }) {
             Badger's Pepper Products
           </Link>
         </span>
+        <button
+          className='navbar-toggler'
+          type='button'
+          data-toggle='collapse'
+          data-target='#navbarSupportedContent'
+          aria-controls='navbarSupportedContent'
+          aria-expanded='false'
+          aria-label='Toggle navigation'
+        >
+          <span className='navbar-toggler-icon'></span>
+        </button>
 
-        <form onSubmit={onSubmit} className='form-inline mx-auto my-lg-0'>
-          <input
-            className='form-control mr-sm-2'
-            type='search'
-            placeholder='Search Products'
-            aria-label='Search Products'
-            id='inputField'
-            value={text}
-            onChange={onChange}
+        <div className='collapse navbar-collapse' id='navbarSupportedContent'>
+          <Search
+            products={products}
+            setProducts={setProducts}
+            showSearch={showSearch}
           />
-          <button className='btn btn-outline-light my-2 my-sm-0' type='submit'>
-            Search
-          </button>
-        </form>
-        <Link to='/cart' id='cartLink'>
-          <button className='btn btn-outline-info my-2 my-sm-0'>
-            Shopping Cart{' '}
-            <span className='badge badge-dark'>({cartItems.length})</span>
-          </button>
-        </Link>
+          <Link to='/cart' id='cartLink'>
+            <button className='btn btn-outline-info my-2 my-sm-0'>
+              Shopping Cart{' '}
+              <span className='badge badge-dark'>({cartItems.length})</span>
+            </button>
+          </Link>
+        </div>
       </nav>
     </Fragment>
   );

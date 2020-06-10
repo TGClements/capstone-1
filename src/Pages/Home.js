@@ -10,11 +10,58 @@ function Home({
   setShow,
   toastBody,
   setToastBody,
+  stock,
+  setStock,
+  setShowSearch,
 }) {
-  const [stock, setStock] = useState([10, 10, 10, 10, 10, 10, 10, 10, 10, 10]);
+  function updateStock(i) {
+    const updatedStock = [...stock];
+    updatedStock[i] = updatedStock[i] - 1;
+    console.log(updatedStock);
+    setStock(updatedStock);
+  }
+
+  function addToCart(i) {
+    let searchCounter = 0;
+
+    if (cartItems.length === 0) {
+      // If no items in cart, add item like normal
+
+      console.log('product ' + products[i].name);
+      console.log('no items in cart');
+      setCartItems(cartItems.concat(products[i]));
+    }
+
+    cartItems.forEach((item, n) => {
+      if (item.name === products[i].name) {
+        console.log('item ' + item.name);
+        console.log('product ' + products[i].name);
+        console.log(products[i].name + ' is already in cart');
+        item.quantity += 1;
+        searchCounter += 1;
+      } else {
+        // console.log(products[i].name + ' is not already in cart');
+        // setCartItems(cartItems.concat(products[i]));
+      }
+    });
+
+    if (searchCounter === 0) {
+      console.log(products[i].name + ' is not already in cart');
+      setCartItems(cartItems.concat(products[i]));
+    }
+
+    console.log('if no other console logs, something is not working right');
+    // setCartItems(cartItems.concat(tempProduct));
+    setCartTotal(cartTotal + products[i].price);
+  }
+
+  setShowSearch(true);
 
   return (
     <div className='productContainer'>
+      <div id='invalidSearch' style={{ display: 'none' }}>
+        No Search results found!
+      </div>
       {products.map((product, i) => {
         // Map thru all the products and create a card for each of them
         return (
@@ -36,18 +83,26 @@ function Home({
                 {products[i].flavor}
               </p>
               <p className='card-text'>Stock: {stock[i]}</p>
+              <p className='card-text'>
+                <small>SKU: 00{products[i].sku}</small>
+              </p>
               <button
                 className='btn btn-primary'
                 onClick={() => {
-                  setCartItems(cartItems.concat(products[i]));
-                  setCartTotal(cartTotal + products[i].price);
-                  setStock(stock[i] - 1);
-                  setToastBody(products[i].name);
-                  setShow(true);
+                  if (stock[i] >= 1) {
+                    // Won't let user add item to cart if no stock is left
+                    addToCart(i);
+                    updateStock(i);
+                    setToastBody(products[i].name);
+                    setShow(true);
+                  }
                 }}
               >
                 Add to Cart
               </button>
+              <p className='card-text'>
+                <small>Tags: {products[i].tag} </small>
+              </p>
             </div>
           </div>
         );

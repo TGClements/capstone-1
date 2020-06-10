@@ -33,11 +33,15 @@
 * Added pages for home, cart, and page not found.
 * Created products.json to house the products and their properties.
 * Added custom fonts to mimic the site built on wordpress.
-*
-*
-*
-*
-*
+* Filled out the products.json
+* Imported json file and stored items into an state array.
+* Created a products page that populates the products from the state array.
+* Build the shopping cart page by using another array to store the cart items - when the "add to cart" button is clicked, it stores an object representing the item in the cart array. The cart page displays this array if it's not empty, otherwise it displays a message that the cart is empty. When an item is added, there is also a counter to display how many items are in the cart.
+* Added a Toast for feedback when an item is added to the cart, otherwise adding an item feels very shallow and there is no real feedback if the button did anything otherwise.
+* Implemented a stock keeping functionality. When an item is added to the cart, decrease the stock counter. If an item is removed from the cart, increase the stock counter.
+* Built searching functionality. User can search by full product name or a partial product name. If no results are found, a unique message is displayed. User can then clear search or search for '' to view all products again. Searching is disabled if user is viewing the cart.
+* 
+* 
 <h2>
     4. Reflection / Refactor
 </h2>

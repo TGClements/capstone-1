@@ -12,15 +12,76 @@
 }
 
 .container {
-  padding-top: 5%;
-  margin-top: 5vh;
   margin-bottom: 5vh;
 }
 
-.productContainer {
-  display: grid;
-  grid-template-columns: auto auto auto auto auto;
-  gap: 10px;
+@media only screen and (max-width: 320px) {
+  .container {
+    margin-top: 30%;
+  }
+  #searchForm {
+    justify-content: center;
+  }
+  #homeLink {
+    font-size: 35px;
+  }
+}
+
+@media only screen and (min-width: 375px) {
+  .container {
+    margin-top: 25%;
+  }
+  #searchForm {
+    justify-content: center;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    margin-top: 13%;
+  }
+  #searchForm {
+    margin-bottom: 1vh;
+  }
+  .productContainer {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 10px;
+  }
+}
+
+@media only screen and (min-width: 990px) {
+  .container {
+    margin-top: 10%;
+  }
+  .productContainer {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 10px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .container {
+    margin-top: 7%;
+  }
+  .productContainer {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    gap: 10px;
+    margin-top: 0px;
+  }
+}
+
+@media only screen and (min-width: 2560px) {
+  .container {
+    margin-top: 4%;
+  }
+  .productContainer {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    gap: 10px;
+  }
 }
 
 .cartContainer {
@@ -50,12 +111,17 @@
   justify-content: flex-end;
 }
 
+.card > .card-body > .card-text {
+  font-size: 12px;
+}
+
 #navHeader {
   font-family: 'GhastlyPanic';
   font-weight: 300;
   font-size: 40px;
 }
-#notFound {
+#notFound,
+#thanks {
   font-family: 'GhastlyPanic';
   font-weight: 500;
   font-size: 80px;
@@ -73,4 +139,12 @@
   font-family: 'GhastlyPanic';
   font-weight: 300;
   font-size: 80px;
+}
+
+#invalidSearch {
+  justify-content: center;
+}
+
+#navbarSupportedContent {
+  justify-content: flex-end;
 }
