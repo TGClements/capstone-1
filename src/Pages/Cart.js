@@ -11,7 +11,7 @@ function Cart({
   setShowSearch,
   stripeToken,
 }) {
-  // Stripe
+  // Stripe (taken from their API)
   const [stripe, setStripe] = useState(null);
   useEffect(() => {
     if (window.Stripe) {
@@ -45,10 +45,10 @@ function Cart({
     setCartItems([]);
   }
 
-  function updateStock(i) {
+  function updateStock(i, n) {
     // Take in the stock array, then add 1 to the stock for whichever item was removed from the cart
     const updatedStock = [...stock];
-    updatedStock[i] = updatedStock[i] + 1;
+    updatedStock[i] = updatedStock[i] + cartItems[n].quantity;
     console.log(updatedStock);
     setStock(updatedStock);
   }
@@ -57,6 +57,7 @@ function Cart({
 
   console.log(cartItems.length);
   if (cartItems.length === 0) {
+    // If cartItems is empty, display custom page
     return (
       <div className='cartContainer'>
         <div className='card'>
@@ -72,6 +73,7 @@ function Cart({
       </div>
     );
   } else {
+    // Otherwise display the items in the cart
     return (
       <div className='cartContainer'>
         <div className='card'>
@@ -89,9 +91,12 @@ function Cart({
                     className='btn btn-link'
                     id='deleteItem'
                     onClick={() => {
+                      // Call some functions when item is deleted
                       deleteItem(i);
-                      setCartTotal(cartTotal - cartItems[i].price);
-                      updateStock(cartItems[i].sku);
+                      updateStock(cartItems[i].sku, i);
+                      setCartTotal(
+                        cartTotal - cartItems[i].price * cartItems[i].quantity
+                      );
                     }}
                   >
                     <svg
@@ -126,6 +131,7 @@ function Cart({
               <button
                 className='btn btn-danger'
                 onClick={() => {
+                  // Clear the cart and reset the total
                   clearCart();
                   setCartTotal(0);
                 }}
@@ -135,6 +141,7 @@ function Cart({
               <button
                 className='btn btn-success'
                 onClick={() => {
+                  // Go to stripe checkout
                   checkout();
                 }}
               >

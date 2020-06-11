@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 function Home({
   products,
@@ -15,6 +15,7 @@ function Home({
   setShowSearch,
 }) {
   function updateStock(i) {
+    // Decrease the stock when an item is added to the cart
     const updatedStock = [...stock];
     updatedStock[i] = updatedStock[i] - 1;
     console.log(updatedStock);
@@ -27,16 +28,17 @@ function Home({
     if (cartItems.length === 0) {
       // If no items in cart, add item like normal
 
-      console.log('product ' + products[i].name);
-      console.log('no items in cart');
+      // console.log('product ' + products[i].name);
+      // console.log('no items in cart');
       setCartItems(cartItems.concat(products[i]));
     }
 
     cartItems.forEach((item, n) => {
+      // Iterate thru the cartItems array and see if a duplicate is added, if we're adding a duplicate, increase a search counter and the quantity
       if (item.name === products[i].name) {
-        console.log('item ' + item.name);
-        console.log('product ' + products[i].name);
-        console.log(products[i].name + ' is already in cart');
+        // console.log('item ' + item.name);
+        // console.log('product ' + products[i].name);
+        // console.log(products[i].name + ' is already in cart');
         item.quantity += 1;
         searchCounter += 1;
       } else {
@@ -46,16 +48,16 @@ function Home({
     });
 
     if (searchCounter === 0) {
-      console.log(products[i].name + ' is not already in cart');
+      // If this is the first instance of an item getting added, add it to cart
+      // console.log(products[i].name + ' is not already in cart');
       setCartItems(cartItems.concat(products[i]));
     }
 
-    console.log('if no other console logs, something is not working right');
     // setCartItems(cartItems.concat(tempProduct));
     setCartTotal(cartTotal + products[i].price);
   }
 
-  setShowSearch(true);
+  setShowSearch(true); // Allow the search bar to be shown on this screen
 
   return (
     <div className='productContainer'>

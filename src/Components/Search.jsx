@@ -1,5 +1,4 @@
 import React, { Fragment, useState } from 'react';
-import Products from '../Assets/Products.json';
 
 function Search({ products, setProducts, showSearch }) {
   const [text, setText] = useState('');
@@ -40,6 +39,8 @@ function Search({ products, setProducts, showSearch }) {
       if (matchedItems === 0) {
         document.getElementById('invalidSearch').style.display = 'flex';
       }
+
+      // TODO search by tags, other attributes
       //   products.forEach((product, i) => {
       //     product.tag.forEach((tag, i) => {
       //       console.log(tag);
@@ -51,11 +52,13 @@ function Search({ products, setProducts, showSearch }) {
   const onChange = (e) => setText(e.target.value);
 
   function resetSearch() {
+    // Reset the styling on the search results, then hide the clear search button
     setText('');
     document.getElementById('clearSearch').style.display = 'none';
   }
 
   if (showSearch) {
+    // If we're allowed to show the search bar, display it
     return (
       <Fragment>
         <form
@@ -89,6 +92,7 @@ function Search({ products, setProducts, showSearch }) {
       </Fragment>
     );
   } else {
+    // Otherwise, return nothing
     return <Fragment></Fragment>;
   }
 }

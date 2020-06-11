@@ -40,12 +40,12 @@
 * Added a Toast for feedback when an item is added to the cart, otherwise adding an item feels very shallow and there is no real feedback if the button did anything otherwise.
 * Implemented a stock keeping functionality. When an item is added to the cart, decrease the stock counter. If an item is removed from the cart, increase the stock counter.
 * Built searching functionality. User can search by full product name or a partial product name. If no results are found, a unique message is displayed. User can then clear search or search for '' to view all products again. Searching is disabled if user is viewing the cart.
-* 
+* Consolidated cart items - if multiple of the same products are added, it increases the counter instead of adding multiple instances of the item.
 * 
 <h2>
     4. Reflection / Refactor
 </h2>
-*
+* I was able to solve the initial problem. Although I ended up not cloning it exactly as the wordpress site looks, I ended up making a bit simpler version of the site, which accomplishes the same thing.
 *
 *
 *
