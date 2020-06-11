@@ -45,7 +45,7 @@
 <h2>
     4. Reflection / Refactor
 </h2>
-* I was able to solve the initial problem. Although I ended up not cloning it exactly as the wordpress site looks, I ended up making a bit simpler version of the site, which accomplishes the same thing.
+* I was able to solve the initial problem. Although I ended up not cloning it exactly as the wordpress site looks, I ended up making a bit simpler version of the site, which accomplishes the same thing. I ended up refactoring the shopping cart, so when multiple of the same items are added, the quantity increases instead of adding a new instance of the item to the cart.
 *
 *
 *
